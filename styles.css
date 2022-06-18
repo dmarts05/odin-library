@@ -1,8 +1,7 @@
 /* General styling */
 :root {
   --base-color: white;
-  --base-dark-color: #edecec;
-  --base-darker-color: #dadada;
+  --base-dark-color: #f2f1f1;
   --green: #5adc5a;
   --red: #f43232;
   --contrast: #000000;
@@ -19,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  background-color: var(--base-darker-color);
+  background-color: var(--base-dark-color);
 }
 
 button {
@@ -70,7 +69,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--base-darker-color);
+  background-color: var(--base-dark-color);
 }
 
 main > button {
