@@ -1,6 +1,114 @@
+/* General styling */
+:root {
+  --base-color: white;
+  --base-dark-color: #edecec;
+  --base-darker-color: #dadada;
+  --green: #5adc5a;
+  --red: #f43232;
+  --contrast: #000000;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Work Sans', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: var(--base-darker-color);
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 24px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+  background-color: var(--base-dark-color);
+}
+
+button:hover {
+  color: var(--base-color);
+  background-color: var(--contrast);
+}
+
+.read,
+.not-read {
+  color: var(--base-color);
+}
+
+.read {
+  background-color: var(--green);
+}
+
+.not-read {
+  background-color: var(--red);
+}
+
+/* Header */
+
+header {
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: var(--base-color);
+}
+
+/* Main */
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--base-darker-color);
+}
+
+main > button {
+  font-size: 1.75rem;
+  color: var(--base-color);
+  background-color: var(--green);
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+/* Books */
+
+main .book-wrapper {
+  width: 100%;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.book-wrapper .book {
+  font-size: 1.25rem;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--base-color);
+}
+
+.book-wrapper .book p:first-child {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.book-wrapper .book button {
+  width: 100%;
 }
