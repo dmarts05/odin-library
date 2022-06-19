@@ -67,7 +67,7 @@ function clearLibrary() {
   }
 }
 
-function toogleModal() {
+function toggleModal() {
   if (modal.classList.contains('show')) {
     modal.classList.remove('show');
     form.classList.remove('show');
@@ -79,8 +79,8 @@ function toogleModal() {
 
 submitBookBtn.addEventListener('click', addBook);
 
-addBookBtn.addEventListener('click', toogleModal);
-submitBookBtn.addEventListener('click', toogleModal);
+addBookBtn.addEventListener('click', toggleModal);
+submitBookBtn.addEventListener('click', toggleModal);
 
 form.addEventListener('submit', (e) => e.preventDefault());
 
