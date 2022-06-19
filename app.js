@@ -27,17 +27,13 @@ function addBook() {
   const pages = document.getElementById('pages');
   const read = document.getElementById('read');
 
-  if (
-    title.checkValidity() &&
-    author.checkValidity() &&
-    pages.checkValidity() &&
-    read.checkValidity()
-  ) {
+  if (form.checkValidity()) {
     let book = new Book(title.value, author.value, pages.value, read.checked);
 
     books.push(book);
     updateLibrary();
     form.reset();
+    toggleModal();
   }
 }
 
@@ -79,10 +75,9 @@ function toggleModal() {
 
 submitBookBtn.addEventListener('click', addBook);
 
-addBookBtn.addEventListener('click', toggleModal);
-submitBookBtn.addEventListener('click', toggleModal);
-
 form.addEventListener('submit', (e) => e.preventDefault());
+
+addBookBtn.addEventListener('click', toggleModal);
 
 // Hide modal by clicking outside of it
 window.onclick = (e) => {
