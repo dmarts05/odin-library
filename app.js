@@ -32,8 +32,8 @@ function addBook() {
 
     books.push(book);
     updateLibrary();
-    form.reset();
     toggleModal();
+    // form.reset();
   }
 }
 
@@ -77,6 +77,7 @@ submitBookBtn.addEventListener('click', addBook);
 
 form.addEventListener('submit', (e) => e.preventDefault());
 
+addBookBtn.addEventListener('click', () => form.reset());
 addBookBtn.addEventListener('click', toggleModal);
 
 // Hide modal by clicking outside of it
