@@ -37,11 +37,15 @@ function addBook() {
 }
 
 function updateLibrary() {
-  const bookIndex = books.length - 1;
+  const bookCard = createBookCard(books.length - 1);
+
+  library.appendChild(bookCard);
+}
+
+function createBookCard(bookIndex) {
   const book = books[bookIndex];
   const readValues = book.getReadValues();
   
-  // Create Book Card
   const bookCard = document.createElement('div');
   bookCard.classList.add('book');
   bookCard.dataset.bookIndex = `${bookIndex}`;
@@ -68,8 +72,7 @@ function updateLibrary() {
   bookCard.appendChild(readStatusBtn);
   bookCard.appendChild(removeBtn);
 
-  // Add Book Card to Library
-  library.appendChild(bookCard);
+  return bookCard;
 }
 
 function toggleModal() {
