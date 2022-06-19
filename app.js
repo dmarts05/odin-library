@@ -31,15 +31,11 @@ function addBook() {
     let book = new Book(title.value, author.value, pages.value, read.checked);
 
     books.push(book);
-    updateLibrary();
+    const bookCard = createBookCard(books.length - 1);
+
+    library.appendChild(bookCard);
     toggleModal();
   }
-}
-
-function updateLibrary() {
-  const bookCard = createBookCard(books.length - 1);
-
-  library.appendChild(bookCard);
 }
 
 function createBookCard(bookIndex) {
@@ -62,10 +58,11 @@ function createBookCard(bookIndex) {
   const readStatusBtn = document.createElement('button');
   readStatusBtn.classList.add(`${readValues[0]}`);
   readStatusBtn.innerText = `${readValues[1]}`;
-  readStatusBtn.addEventListener('click', (e) => toggleReadStatus(e));
+  readStatusBtn.addEventListener('click', toggleReadStatus);
 
   const removeBtn = document.createElement('button');
   removeBtn.innerText = 'Remove';
+  removeBtn.addEventListener('click', removeBook);
 
   bookCard.appendChild(titleParagraph);
   bookCard.appendChild(authorParagraph);
@@ -74,6 +71,26 @@ function createBookCard(bookIndex) {
   bookCard.appendChild(removeBtn);
 
   return bookCard;
+}
+
+function removeBook(e) {
+  const removedBookCard = e.target.parentElement;
+  const removedBookIndex = e.target.parentElement.dataset.bookIndex;
+
+  books.splice(removedBookIndex, 1);
+  removedBookCard.parentElement.removeChild(removedBookCard);
+
+  updateDataBookIndex();
+}
+
+function updateDataBookIndex() {
+  const bookCards = library.childNodes;
+  let bookIndex = 0;
+
+  bookCards.forEach((bookCard) => {
+    bookCard.dataset.bookIndex = bookIndex;
+    bookIndex++;
+  });
 }
 
 function toggleModal() {
