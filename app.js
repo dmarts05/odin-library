@@ -134,3 +134,11 @@ window.onclick = (e) => {
     form.classList.remove('show');
   }
 };
+
+// Hide modal when when by pressing Esc key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    modal.classList.remove('show');
+    form.classList.remove('show');
+  }
+});
