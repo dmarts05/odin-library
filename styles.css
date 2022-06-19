@@ -115,6 +115,8 @@ main .book-wrapper {
 /* Modal */
 
 .modal {
+  pointer-events: none;
+  opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -127,9 +129,15 @@ main .book-wrapper {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.1s;
 }
 
-.modal form {
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal #form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -139,6 +147,12 @@ main .book-wrapper {
   padding: 32px;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+  transform: scale(0);
+  transition: transform 0.25s;
+}
+
+.modal #form.show {
+  transform: scale(1);
 }
 
 input[type='text'],
@@ -173,16 +187,16 @@ input[type='checkbox']:checked {
   box-shadow: inset 0 0 0 0.75rem var(--contrast);
 }
 
-.modal form button {
+.modal #form button {
   color: var(--base-color);
   background-color: var(--green);
 }
 
-.modal form button:hover {
+.modal #form button:hover {
   background-color: var(--contrast);
 }
 
-.modal form p {
+.modal #form p {
   font-size: 1.25rem;
   display: flex;
   justify-content: center;

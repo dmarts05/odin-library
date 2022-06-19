@@ -1,5 +1,8 @@
 const library = document.querySelector('.book-wrapper');
-console.log(library);
+const form = document.getElementById('form');
+const submitBookBtn = document.getElementById('submit');
+const addBookBtn = document.querySelector('main > button');
+const modal = document.querySelector('.modal');
 
 let books = [];
 
@@ -12,6 +15,10 @@ function Book(title, author, pages, read) {
 
 Book.prototype.getReadValues = function () {
   return this.read ? ['read', 'Read'] : ['not-read', 'Not read'];
+};
+
+Book.prototype.toggleReadValue = function () {
+  this.read ? (this.read = false) : (this.read = true);
 };
 
 function addBook() {
@@ -30,6 +37,7 @@ function addBook() {
 
     books.push(book);
     updateLibrary();
+    form.reset();
   }
 }
 
@@ -59,4 +67,27 @@ function clearLibrary() {
   }
 }
 
-document.getElementById('submit').addEventListener('click', addBook);
+function toogleModal() {
+  if (modal.classList.contains('show')) {
+    modal.classList.remove('show');
+    form.classList.remove('show');
+  } else {
+    modal.classList.add('show');
+    form.classList.add('show');
+  }
+}
+
+submitBookBtn.addEventListener('click', addBook);
+
+addBookBtn.addEventListener('click', toogleModal);
+submitBookBtn.addEventListener('click', toogleModal);
+
+form.addEventListener('submit', (e) => e.preventDefault());
+
+// Hide modal by clicking outside of it
+window.onclick = (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('show');
+    form.classList.remove('show');
+  }
+};
