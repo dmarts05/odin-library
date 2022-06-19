@@ -18,7 +18,7 @@
     />
 
     <!-- JS -->
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header>
@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="modal">
-        <form action="">
+        <form>
           <input
             type="text"
             required
@@ -122,7 +122,7 @@
             name="pages"
             id="pages"
             placeholder="Pages"
-            min="0"
+            min="1"
           />
 
           <p>
@@ -130,7 +130,7 @@
             <input type="checkbox" name="read" id="read" />
           </p>
 
-          <button type="submit">Submit</button>
+          <button type="button" id="submit">Submit</button>
         </form>
       </div>
     </main>
