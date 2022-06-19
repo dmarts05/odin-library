@@ -33,34 +33,43 @@ function addBook() {
     books.push(book);
     updateLibrary();
     toggleModal();
-    // form.reset();
   }
 }
 
 function updateLibrary() {
-  clearLibrary();
+  const bookIndex = books.length - 1;
+  const book = books[bookIndex];
+  const readValues = book.getReadValues();
+  
+  // Create Book Card
+  const bookCard = document.createElement('div');
+  bookCard.classList.add('book');
+  bookCard.dataset.bookIndex = `${bookIndex}`;
 
-  books.forEach((book) => {
-    const readValues = book.getReadValues();
-    const bookCard = `
-      <div class="book">
-        <p>${book.title}</p>
-        <p>${book.author}</p>
-        <p>${book.pages}</p>
+  const titleParagraph = document.createElement('p');
+  titleParagraph.innerText = `${book.title}`;
 
-        <button class="${readValues[0]}">${readValues[1]}</button>
-        <button>Remove</button>
-      </div>`;
-    library.innerHTML += bookCard;
-  });
-}
+  const authorParagraph = document.createElement('p');
+  authorParagraph.innerText = `${book.author}`;
 
-function clearLibrary() {
-  let child = library.lastElementChild;
-  while (child) {
-    library.removeChild(child);
-    child = library.lastElementChild;
-  }
+  const pagesParagraph = document.createElement('p');
+  pagesParagraph.innerText = `${book.pages}`;
+
+  const readStatusBtn = document.createElement('button');
+  readStatusBtn.classList.add(`${readValues[0]}`);
+  readStatusBtn.innerText = `${readValues[1]}`;
+
+  const removeBtn = document.createElement('button');
+  removeBtn.innerText = 'Remove';
+
+  bookCard.appendChild(titleParagraph);
+  bookCard.appendChild(authorParagraph);
+  bookCard.appendChild(pagesParagraph);
+  bookCard.appendChild(readStatusBtn);
+  bookCard.appendChild(removeBtn);
+
+  // Add Book Card to Library
+  library.appendChild(bookCard);
 }
 
 function toggleModal() {
