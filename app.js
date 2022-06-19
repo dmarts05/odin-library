@@ -18,7 +18,7 @@ Book.prototype.getReadValues = function () {
 };
 
 Book.prototype.toggleReadValue = function () {
-  this.read ? (this.read = false) : (this.read = true);
+  this.read = !this.read
 };
 
 function addBook() {
