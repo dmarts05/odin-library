@@ -45,7 +45,7 @@ function updateLibrary() {
 function createBookCard(bookIndex) {
   const book = books[bookIndex];
   const readValues = book.getReadValues();
-  
+
   const bookCard = document.createElement('div');
   bookCard.classList.add('book');
   bookCard.dataset.bookIndex = `${bookIndex}`;
@@ -62,6 +62,7 @@ function createBookCard(bookIndex) {
   const readStatusBtn = document.createElement('button');
   readStatusBtn.classList.add(`${readValues[0]}`);
   readStatusBtn.innerText = `${readValues[1]}`;
+  readStatusBtn.addEventListener('click', (e) => toggleReadStatus(e));
 
   const removeBtn = document.createElement('button');
   removeBtn.innerText = 'Remove';
@@ -83,6 +84,23 @@ function toggleModal() {
     modal.classList.add('show');
     form.classList.add('show');
   }
+}
+
+function toggleReadStatus(e) {
+  const readStatusBtn = e.target;
+
+  if (readStatusBtn.classList.contains('read')) {
+    readStatusBtn.classList.remove('read');
+    readStatusBtn.classList.add('not-read');
+    readStatusBtn.innerText = 'Not read';
+  } else {
+    readStatusBtn.classList.remove('not-read');
+    readStatusBtn.classList.add('read');
+    readStatusBtn.innerText = 'Read';
+  }
+
+  const bookIndex = readStatusBtn.parentElement.dataset.bookIndex;
+  books[bookIndex].toggleReadValue();
 }
 
 submitBookBtn.addEventListener('click', addBook);
