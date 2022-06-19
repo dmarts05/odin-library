@@ -104,8 +104,23 @@ main .book-wrapper {
 }
 
 .book-wrapper .book p:first-child {
+  position: relative;
+  width: 100%;
   font-size: 2rem;
   font-weight: 600;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.book-wrapper .book p:first-child::after {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 5px;
+  background-color: var(--contrast);
+  border-radius: 10px;
 }
 
 .book-wrapper .book button {
