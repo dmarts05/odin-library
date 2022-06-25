@@ -135,7 +135,7 @@ window.onclick = (e) => {
   }
 };
 
-// Hide modal when when by pressing Esc key
+// Hide modal by pressing Esc key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     modal.classList.remove('show');
